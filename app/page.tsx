@@ -1,5 +1,9 @@
+import Recipe from ".";
+
 export default function Home() {
   return (
-    <div className="  ">Hello</div>
+    <div className="  ">
+      <Recipe />
+    </div>
   );
 }

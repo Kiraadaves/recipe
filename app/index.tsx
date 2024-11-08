@@ -12,10 +12,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import useGetRecipe from "@/hooks/useGetRecipe";
 import Image from "next/image";
+import Modal from "@/components/Modal";
 
 const Recipe = () => {
   const [category, setCategory] = useState("");
-  const [expandedItems, setExpandedItems] = useState<string[]>([]);
+
+  const [modalContent, setModalContent] = useState<string | null>(null);
   const { data: response } = useGetRecipe();
   console.log(response);
   const categories = response?.categories;
@@ -23,10 +25,12 @@ const Recipe = () => {
     setCategory(category);
   };
 
-  const toggleExpand = (id: string) => {
-    setExpandedItems((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
-    );
+  const openModal = (description: string) => {
+    setModalContent(description);
+  };
+
+  const closeModal = () => {
+    setModalContent(null);
   };
 
   return (
@@ -102,23 +106,26 @@ const Recipe = () => {
               <h3 className="text-2xl font-bold text-[#e0702f] mb-2 text-center ">
                 {c.strCategory}
               </h3>
-              <p
-                className={`text-sm text-[#60686C] ${
-                  expandedItems.includes(c.idCategory) ? "" : "line-clamp-3"
-                }`}
-              >
+              <p className={`text-sm text-[#60686C] line-clamp-2`}>
                 {c.strCategoryDescription}
               </p>
-              <Button
-                variant="link"
-                className="mt-2 text-[#e0702f] hover:text-[#c05f29]"
-                onClick={() => toggleExpand(c.idCategory)}
-              >
-                {expandedItems.includes(c.idCategory)
-                  ? "Read Less"
-                  : "Read More"}
-              </Button>
-            </div>
+              <div className="flex justify-center">
+                <Button
+                  variant="outline"
+                  className="mt-2 text-[#e0702f] hover:text-[#c05f29] "
+                  onClick={() => openModal(c.strCategoryDescription)}
+                >
+                  Read More
+                </Button>
+              </div>
+            </div>{" "}
+            {modalContent && (
+              <Modal
+                onClick={closeModal}
+                modalContent={modalContent}
+                modalHeading={c.strCategory}
+              />
+            )}
           </div>
         ))}
       </section>

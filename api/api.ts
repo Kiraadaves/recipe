@@ -1,4 +1,8 @@
-import { GetCategoryNameResponse, GetRecipeResponse } from "@/types/types";
+import {
+  GetCategoryNameResponse,
+  GetRecipeResponse,
+  MealsResponse,
+} from "@/types/types";
 import axios from "axios";
 
 export const getRecipe = async (): Promise<GetRecipeResponse> => {
@@ -21,6 +25,20 @@ export const getCategoryName = async (
   const url = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${name}`;
   try {
     const response = await axios.get<GetCategoryNameResponse>(url);
+    return response.data;
+  } catch (error) {
+    console.error(
+      "Failed to make request:",
+      error instanceof Error ? error.message : String(error)
+    );
+    throw error;
+  }
+};
+
+export const getMealRecipe = async (id: string): Promise<MealsResponse> => {
+  const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+  try {
+    const response = await axios.get<MealsResponse>(url);
     return response.data;
   } catch (error) {
     console.error(

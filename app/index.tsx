@@ -1,36 +1,45 @@
 "use client";
 
 import React, { useState } from "react";
-import { IoIosSearch, IoMdArrowDropdownCircle } from "react-icons/io";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { IoIosSearch } from "react-icons/io";
+//import {
+//  DropdownMenu,
+//  DropdownMenuContent,
+//  DropdownMenuItem,
+//  DropdownMenuTrigger,
+//} from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import useGetRecipe from "@/hooks/useGetRecipe";
 import Image from "next/image";
 import Modal from "@/components/Modal";
+import { useRouter } from "next/navigation";
 
 const Recipe = () => {
-  const [category, setCategory] = useState("");
-
-  const [modalContent, setModalContent] = useState<string | null>(null);
+  // const [category, setCategory] = useState("");
+  const [modalContent, setModalContent] = useState<{
+    content: string;
+    heading: string;
+  } | null>(null);
   const { data: response } = useGetRecipe();
   console.log(response);
   const categories = response?.categories;
-  const handleCategorySelect = (category: string) => {
-    setCategory(category);
-  };
+  const router = useRouter();
+  // const handleCategorySelect = (category: string) => {
+  //   setCategory(category);
+  // };
 
-  const openModal = (description: string) => {
-    setModalContent(description);
+  const openModal = (description: string, heading: string) => {
+    setModalContent({ content: description, heading: heading });
   };
 
   const closeModal = () => {
     setModalContent(null);
+  };
+
+  const handleViewCategory = (categoryName: string) => {
+    setModalContent(null);
+    router.push(`/category/${categoryName}`);
   };
 
   return (
@@ -44,6 +53,7 @@ const Recipe = () => {
           />
           <IoIosSearch className="w-8 h-8 text-[#e0702f]" />
         </div>
+        {/*
         <div>
           {" "}
           <DropdownMenu>
@@ -85,50 +95,61 @@ const Recipe = () => {
               ))}
             </DropdownMenuContent>
           </DropdownMenu>
-        </div>{" "}
+        </div>{" "}*/}
       </section>
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 px-6 py-4">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:px-6 lg:py-4 px-12 py-8">
         {categories?.map((c) => (
           <div
             key={c.idCategory}
-            className="bg-white rounded-lg shadow-md overflow-hidden border-2 border-[#f6cdb2be]"
+            className="bg-white rounded-lg shadow-md overflow-hidden border-2 border-[#f6cdb2be] flex flex-col"
           >
-            <div className="relative pt-[75%]">
+            <div className="relative w-full pt-[75%] overflow-hidden">
               <Image
                 alt={c.strCategory}
                 src={c.strCategoryThumb}
-                height={500}
-                width={500}
-                className="absolute top-0 left-0 transition-transform duration-300 ease-in-out hover:scale-105"
+                layout="fill"
+                objectFit="cover"
+                className="absolute inset-0 w-full h-full transition-transform duration-300 ease-in-out hover:scale-105"
               />
             </div>
-            <div className="p-4">
-              <h3 className="text-2xl font-bold text-[#e0702f] mb-2 text-center ">
-                {c.strCategory}
-              </h3>
-              <p className={`text-sm text-[#60686C] line-clamp-2`}>
-                {c.strCategoryDescription}
-              </p>
-              <div className="flex justify-center">
+            <div className="p-4 flex-grow flex flex-col justify-between">
+              <div>
+                <h3 className="text-2xl font-bold text-[#e0702f] mb-2 text-center">
+                  {c.strCategory}
+                </h3>
+                <p className="text-sm text-[#60686C] line-clamp-2">
+                  {c.strCategoryDescription}
+                </p>
+              </div>
+              <div className="flex justify-center mt-4">
                 <Button
                   variant="outline"
-                  className="mt-2 text-[#e0702f] hover:text-[#c05f29] "
-                  onClick={() => openModal(c.strCategoryDescription)}
+                  className="text-[#e0702f] hover:text-[#c05f29]"
+                  onClick={() =>
+                    openModal(c.strCategoryDescription, c.strCategory)
+                  }
                 >
                   Read More
                 </Button>
+                <Button
+                  variant="outline"
+                  className="text-[#e0702f] hover:text-[#c05f29]"
+                  onClick={() => handleViewCategory(c.strCategory)}
+                >
+                  View
+                </Button>
               </div>
-            </div>{" "}
-            {modalContent && (
-              <Modal
-                onClick={closeModal}
-                modalContent={modalContent}
-                modalHeading={c.strCategory}
-              />
-            )}
+            </div>
           </div>
         ))}
       </section>
+      {modalContent && (
+        <Modal
+          onClick={closeModal}
+          modalContent={modalContent.content}
+          modalHeading={modalContent.heading}
+        />
+      )}
     </div>
   );
 };

@@ -2,7 +2,7 @@ import Recipe from ".";
 
 export default function Home() {
   return (
-    <div className="  ">
+    <div className=" ">
       <Recipe />
     </div>
   );

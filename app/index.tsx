@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import { IoIosSearch } from "react-icons/io";
 //import {
 //  DropdownMenu,
 //  DropdownMenuContent,
@@ -9,7 +8,6 @@ import { IoIosSearch } from "react-icons/io";
 //  DropdownMenuTrigger,
 //} from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import useGetRecipe from "@/hooks/useGetRecipe";
 import Image from "next/image";
 import Modal from "@/components/Modal";
@@ -45,13 +43,19 @@ const Recipe = () => {
   return (
     <div className="w-full max-w-7xl mx-auto">
       <section className="flex flex-col md:flex-row justify-between items-center gap-4 px-6 py-4">
-        <div className="h-[48px] md:w-[414px] w-full shadow-md pl-1 pr-5 py-[10px] flex items-center border-[1px] border-[#BFC3C5] rounded-[6px] ">
-          <Input
-            placeholder="Search"
-            type="text"
-            className="border-none placeholder:text-lg placeholder:text-[#60686C] placeholder:font-medium"
-          />
-          <IoIosSearch className="w-8 h-8 text-[#e0702f]" />
+        <div className="text-center mb-12 w-full">
+          <h1 className="text-4xl font-bold mb-4 text-[#47663B]">
+            Explore Our Meal Categories
+          </h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Discover a world of culinary delights! Browse through our diverse
+            meal categories, click{" "}
+            <span className="text-[#47663B] font-bold">Read More</span> to learn
+            about each category, or{" "}
+            <span className="text-[#47663B] font-bold">View</span> to explore
+            the various meals, recipes, and place your order. Your next favorite
+            dish is just a click away!
+          </p>
         </div>
         {/*
         <div>
@@ -65,7 +69,7 @@ const Recipe = () => {
                 <Button variant="outline" className="text-[#60686c] text-base">
                   {category || "Categories"}
                 </Button>
-                <IoMdArrowDropdownCircle className="w-8 h-8 text-[#e0702f]" />
+                <IoMdArrowDropdownCircle className="w-8 h-8 text-[#47663B]" />
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="bg-[#ffffff] w-[180px] rounded shadow-lg flex flex-col gap-3 ">
@@ -101,7 +105,7 @@ const Recipe = () => {
         {categories?.map((c) => (
           <div
             key={c.idCategory}
-            className="bg-white rounded-lg shadow-md overflow-hidden border-2 border-[#f6cdb2be] flex flex-col"
+            className="bg-white rounded-lg shadow-md overflow-hidden border-2 border-[#47663B55] flex flex-col"
           >
             <div className="relative w-full pt-[75%] overflow-hidden">
               <Image
@@ -114,7 +118,7 @@ const Recipe = () => {
             </div>
             <div className="p-4 flex-grow flex flex-col justify-between">
               <div>
-                <h3 className="text-2xl font-bold text-[#e0702f] mb-2 text-center">
+                <h3 className="text-2xl font-bold text-[#47663B] mb-2 text-center">
                   {c.strCategory}
                 </h3>
                 <p className="text-sm text-[#60686C] line-clamp-2">
@@ -124,7 +128,7 @@ const Recipe = () => {
               <div className="flex justify-center mt-4">
                 <Button
                   variant="outline"
-                  className="text-[#e0702f] hover:text-[#c05f29]"
+                  className="text-[#47663B] hover:text-[#c05f29]"
                   onClick={() =>
                     openModal(c.strCategoryDescription, c.strCategory)
                   }
@@ -133,7 +137,7 @@ const Recipe = () => {
                 </Button>
                 <Button
                   variant="outline"
-                  className="text-[#e0702f] hover:text-[#c05f29]"
+                  className="text-[#47663B] hover:text-[#c05f29]"
                   onClick={() => handleViewCategory(c.strCategory)}
                 >
                   View

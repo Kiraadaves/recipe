@@ -43,6 +43,20 @@ const Recipe = () => {
   return (
     <div className="w-full max-w-7xl mx-auto">
       <section className="flex flex-col md:flex-row justify-between items-center gap-4 px-6 py-4">
+        <div className="text-center mb-12 w-full">
+          <h1 className="text-4xl font-bold mb-4 text-[#47663B]">
+            Explore Our Meal Categories
+          </h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Discover a world of culinary delights! Browse through our diverse
+            meal categories, click{" "}
+            <span className="text-[#47663B] font-bold">Read More</span> to learn
+            about each category, or{" "}
+            <span className="text-[#47663B] font-bold">View</span> to explore
+            the various meals, recipes, and place your order. Your next favorite
+            dish is just a click away!
+          </p>
+        </div>
         {/*
         <div>
           {" "}

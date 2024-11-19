@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { IoIosSearch } from "react-icons/io";
 
+
+
 export default function Header() {
   return (
     <header className="bg-[#47663B] text-white">
@@ -25,13 +27,13 @@ export default function Header() {
               Categories
             </Link>
             <form className="hidden sm:flex items-center">
-              <div className="h-[48px] md:w-[414px] w-full pl-1 pr-5 py-[10px] flex items-center gap-2 border-[1px] border-[#BFC3C5] rounded-[6px] ">
+              <div className="h-[48px] md:w-[414px] w-full pl-1 pr-5 py-[10px] flex items-center gap-2 bg-[#ffffff] rounded-[6px] ">
                 <Input
                   placeholder="Search"
                   type="text"
                   className="border-none placeholder:text-lg placeholder:text-[#47663B] placeholder:font-medium"
                 />
-                <IoIosSearch className="w-8 h-8 text-[#ffffff]" />
+                <IoIosSearch className="w-8 h-8 text-[#47663B]" />
               </div>
             </form>
             <Button

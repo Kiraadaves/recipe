@@ -141,17 +141,17 @@ const Category = () => {
                   ) : (
                     <Button
                       variant="outline"
-                      className="text-[#47663B] border hover:border-2 border-[#47663B] hover:text-[#c05f29] bg-[#fafafa]"
+                      className="text-[#47663B] border hover:border-2 border-[#47663B] hover:font-black bg-[#fafafa] transition-transform duration-500 ease-in-out"
                       onClick={() => addToCart(meal, index)}
                     >
                       Add to Cart
                     </Button>
                   )}
                 </div>
-                <div className="flex justify-center">
+                <div className="flex justify-center mb-6">
                   <Button
                     variant="outline"
-                    className="text-[#47663B] hover:font-extrabold  transition-transform duration-300 ease-in-out"
+                    className="bg-[#47663B] text-white hover:font-extrabold  transition-transform duration-300 ease-in-out"
                     onClick={() => handleViewRecipe(meal.idMeal)}
                   >
                     View Recipe
@@ -167,7 +167,7 @@ const Category = () => {
       <div className="w-1/4 pl-4">
         <div className="bg-white rounded-lg shadow-md p-6 sticky top-0 ">
           {totalItems === 0 ? (
-            <h1 className="text-2xl font-bold mb-4 text-center relative">
+            <h1 className="text-[#47663B] text-2xl font-bold mb-4 text-center relative">
               Your Cart
             </h1>
           ) : (
@@ -182,7 +182,7 @@ const Category = () => {
           {Object.keys(cart).length === 0 ? (
             <div className="text-center">
               <div className="flex justify-center items-center">
-                <MdOutlineAddShoppingCart className="w-24 h-24 text-[#f99e68]" />
+                <MdOutlineAddShoppingCart className="w-24 h-24 mb-4 text-[#f99d688c]" />
               </div>
               <p className="text-sm text-[#47663Bab]">
                 Your added items will appear here

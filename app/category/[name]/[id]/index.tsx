@@ -25,7 +25,7 @@ const Recipe = () => {
   const meal = data?.meals?.[0];
   return (
     <div className="max-w-3xl mx-auto p-6">
-      <h1 className="text-3xl font-bold text-[#e0702f] mb-4 text-center">
+      <h1 className="text-3xl font-bold text-[#47663B] mb-4 text-center">
         {meal.strMeal}
       </h1>
 
@@ -39,7 +39,7 @@ const Recipe = () => {
         />
       </div>
 
-      <div className="text-[#e0702f] mb-6 flex justify-between items-center">
+      <div className="text-[#47663B] mb-6 flex justify-between items-center">
         <h2 className="text-xl font-semibold">Category: {meal.strCategory}</h2>
         <p>Area: {meal.strArea}</p>
       </div>
@@ -61,14 +61,14 @@ const Recipe = () => {
       )}
 
       <div className="mb-6">
-        <h2 className="text-2xl font-semibold text-[#e0702f] mb-2 text-center">
+        <h2 className="text-2xl font-semibold text-[#47663B] mb-2 text-center">
           Instructions
         </h2>
         <p>{meal.strInstructions}</p>
       </div>
 
       <div className="mb-6">
-        <h2 className="text-2xl font-semibold text-[#e0702f] mb-2">
+        <h2 className="text-2xl font-semibold text-[#47663B] mb-2">
           Ingredients
         </h2>
         <ul className="list-disc list-inside">
@@ -90,7 +90,7 @@ const Recipe = () => {
             href={meal.strSource}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-500 hover:underline"
+            className="text-[#47663B] font-medium hover:underline"
           >
             View Original Recipe
           </Link>

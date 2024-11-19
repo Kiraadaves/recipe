@@ -29,7 +29,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <QueryClientProvider client={queryClient}>
-          <div>
+          <div className="flex flex-col gap-20">
             <Header />
             <div className="min-h-screen font-[family-name:var(--font-geist-sans)]">
               {children}

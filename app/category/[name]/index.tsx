@@ -99,14 +99,14 @@ const Category = () => {
     <div className="flex px-4 sm:px-6 lg:px-8 py-4">
       {/* Main Content Div */}
       <div className="w-3/4 pr-4">
-        <h1 className="text-3xl font-bold text-[#e0702f] mb-6 text-center">
+        <h1 className="text-3xl font-bold text-[#47663B] mb-6 text-center">
           {categoryName} Recipes
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {data?.meals?.map((meal, index) => (
             <div
               key={meal.idMeal}
-              className="bg-white rounded-lg shadow-md overflow-hidden border-2 border-[#f6cdb2be] flex flex-col"
+              className="bg-white rounded-lg shadow-md overflow-hidden border-2 border-[#47663B55] flex flex-col"
             >
               <div className="relative w-full pt-[75%] overflow-hidden">
                 <Image
@@ -118,12 +118,12 @@ const Category = () => {
                 />
               </div>
               <div className="p-4 relative flex-grow flex flex-col gap-2 justify-between">
-                <h3 className="text-xl font-semibold text-[#e0702f] mb-2 mt-4 text-center">
+                <h3 className="text-xl font-semibold text-[#47663B] mb-2 mt-4 text-center">
                   {meal.strMeal}
                 </h3>
                 <div className="flex justify-center mt-4 absolute top-[-32px] left-1/2 transform -translate-x-1/2 ">
                   {cart[meal.idMeal] ? (
-                    <div className="flex gap-3 items-center border py-1 px-5 rounded-[15px] bg-[#e0702f] text-white">
+                    <div className="flex gap-3 items-center border py-1 px-5 rounded-[15px] bg-[#47663B] text-white">
                       <button
                         className="border-2 rounded-full px-[5px] border-[#fafafa] text-xs"
                         onClick={() => removeFromCart(meal.idMeal)}
@@ -141,7 +141,7 @@ const Category = () => {
                   ) : (
                     <Button
                       variant="outline"
-                      className="text-[#e0702f] border hover:border-2 border-[#e0702f] hover:text-[#c05f29] bg-[#fafafa]"
+                      className="text-[#47663B] border hover:border-2 border-[#47663B] hover:text-[#c05f29] bg-[#fafafa]"
                       onClick={() => addToCart(meal, index)}
                     >
                       Add to Cart
@@ -151,7 +151,7 @@ const Category = () => {
                 <div className="flex justify-center">
                   <Button
                     variant="outline"
-                    className="text-[#e0702f] hover:font-extrabold  transition-transform duration-300 ease-in-out"
+                    className="text-[#47663B] hover:font-extrabold  transition-transform duration-300 ease-in-out"
                     onClick={() => handleViewRecipe(meal.idMeal)}
                   >
                     View Recipe
@@ -172,8 +172,8 @@ const Category = () => {
             </h1>
           ) : (
             <div className=" mb-4 text-center relative inline-block">
-              <IoCartOutline className="w-8 h-8 text-[#e0702f]" />{" "}
-              <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 rounded-full border bg-[#e0702f] text-white px-2 py-1 text-xs">
+              <IoCartOutline className="w-8 h-8 text-[#47663B]" />{" "}
+              <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 rounded-full border bg-[#47663B] text-white px-2 py-1 text-xs">
                 {totalItems}
               </span>
             </div>
@@ -184,7 +184,7 @@ const Category = () => {
               <div className="flex justify-center items-center">
                 <MdOutlineAddShoppingCart className="w-24 h-24 text-[#f99e68]" />
               </div>
-              <p className="text-sm text-[#e0702fab]">
+              <p className="text-sm text-[#47663Bab]">
                 Your added items will appear here
               </p>
             </div>
@@ -219,7 +219,7 @@ const Category = () => {
 
                         <div className="flex items-center gap-4">
                           <button onClick={() => removeFromCart(mealId)}>
-                            <IoIosRemoveCircleOutline className="text-[#e0702f] w-6 h-6" />
+                            <IoIosRemoveCircleOutline className="text-[#47663B] w-6 h-6" />
                           </button>
                           <button
                             onClick={() =>
@@ -233,7 +233,7 @@ const Category = () => {
                               )
                             }
                           >
-                            <IoAddCircleOutline className="text-[#e0702f] w-6 h-6" />
+                            <IoAddCircleOutline className="text-[#47663B] w-6 h-6" />
                           </button>
                         </div>
                       </div>
@@ -253,12 +253,12 @@ const Category = () => {
                 Total: ${cartTotal.toFixed(2)}
               </div>
               <div className="mt-4 flex justify-between">
-                <button onClick={clearCart} className="text-[#e0702f]">
+                <button onClick={clearCart} className="text-[#47663B]">
                   Clear Cart
                 </button>
                 <button
                   onClick={() => alert("Confirming order...")}
-                  className="bg-[#e0702f] text-white px-4 py-2 rounded"
+                  className="bg-[#47663B] text-white px-4 py-2 rounded"
                 >
                   Confirm Order
                 </button>

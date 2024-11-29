@@ -34,7 +34,7 @@ export default function Header() {
           <div className="flex items-center space-x-4">
             <Link
               href="/"
-              className="text-sm font-medium hover:text-opacity-80"
+              className="bg-[#ffffff] text-[#47663B] rounded-[6px] py-[10px] px-4  text-sm font-bold hover:text-opacity-80"
             >
               Categories
             </Link>
@@ -43,7 +43,7 @@ export default function Header() {
                 <Input
                   placeholder="Search"
                   type="text"
-                  className="border-none placeholder:text-lg placeholder:text-[#47663B] placeholder:font-medium"
+                  className="border-none placeholder:text-lg placeholder:text-[#47663B] placeholder:font-medium focus-visible:ring-0 focus-visible:ring-offset-0"
                 />
                 <IoIosSearch className="w-8 h-8 text-[#47663B]" />
               </div>

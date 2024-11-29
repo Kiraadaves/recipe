@@ -1,26 +1,26 @@
-'use client'
+"use client";
 
-import Link from "next/link"
-import { ShoppingCart } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { IoIosSearch } from "react-icons/io"
+import Link from "next/link";
+import { ShoppingCart } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { IoIosCloseCircle, IoIosSearch } from "react-icons/io";
 
-import { useState } from "react"
-import CartSidebar from "./CartSideBar"
-import { useCart } from "@/context/CartContext"
+import { useState } from "react";
+import CartSidebar from "./CartSideBar";
+import { useCart } from "@/context/CartContext";
 export default function Header() {
-  const { cart } = useCart()
+  const { cart } = useCart();
   const totalItems = Object.values(cart).reduce(
     (acc, item) => acc + item.quantity,
     0
-  )
+  );
 
-  const [isMobileCartOpen, setIsMobileCartOpen] = useState(false)
+  const [isMobileCartOpen, setIsMobileCartOpen] = useState(false);
 
   const handleCartToggle = () => {
-    setIsMobileCartOpen(!isMobileCartOpen)
-  }
+    setIsMobileCartOpen(!isMobileCartOpen);
+  };
 
   return (
     <header className="bg-[#47663B] text-white">
@@ -67,18 +67,22 @@ export default function Header() {
       </div>
       {/* Mobile Cart Modal */}
       {isMobileCartOpen && (
-        <div className="sm:hidden fixed inset-0 z-50 bg-white p-4 overflow-y-auto">
-          <button
-            className="absolute top-4 right-4 text-[#47663B] text-lg font-bold"
-            onClick={handleCartToggle}
-          >
-            Close
-          </button>
-          <div className="mt-10">
-            <CartSidebar />
+        <div className="sm:hidden fixed inset-0 z-50  bg-black bg-opacity-50  p-4 overflow-y-auto">
+          <div className="bg-[#ebf4e7] rounded-[8px] p-4">
+            <div className="flex justify-end">
+              <button
+                className="text-[#47663B] text-lg font-bold"
+                onClick={handleCartToggle}
+              >
+                <IoIosCloseCircle className="w-8 h-8" />
+              </button>
+            </div>
+            <div className="mt-6">
+              <CartSidebar />
+            </div>
           </div>
         </div>
       )}
     </header>
-  )
+  );
 }

@@ -93,7 +93,7 @@ const CartSidebar = () => {
               </li>
             ))}
           </ul>
-          <div className="mt-4 text-right font-bold">
+          <div className="mt-4 text-right font-bold text-[#47663B]">
             Total: ${cartTotal.toFixed(2)}
           </div>
           <div className="mt-4 flex justify-between">

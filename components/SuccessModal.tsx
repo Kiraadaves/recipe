@@ -3,22 +3,33 @@ import { FaRegCircleCheck } from "react-icons/fa6";
 import { IoIosCloseCircle } from "react-icons/io";
 import CartSidebar from "./CartSideBar";
 
-const SuccessModal = () => {
+interface SuccessModalProps {
+  onClose: () => void;
+}
+
+const SuccessModal = ({ onClose }: SuccessModalProps) => {
   return (
     <div className="sm:hidden fixed inset-0 z-50  bg-black bg-opacity-50  p-4 overflow-y-auto">
       <div className="bg-[#ebf4e7] rounded-[8px] p-4">
         <div className="flex justify-between text-[#47663B]">
           <FaRegCircleCheck className="w-8 h-8" />
-          <IoIosCloseCircle className="w-8 h-8" />
+          <button onClick={onClose}>
+            <IoIosCloseCircle className="w-8 h-8" />
+          </button>
         </div>
-        <div>
-          <h1>Order Confirmed</h1>
-          <p>We hope you enjoy your food!</p>
+        <div className="text-center my-4">
+          <h1 className="text-2xl font-bold text-[#47663B]">Order Confirmed</h1>
+          <p className="text-[#47663B]">We hope you enjoy your food!</p>
         </div>
         <div className="mt-6">
           <CartSidebar />
         </div>
-        <button>Start New Order</button>
+        <button
+          onClick={onClose}
+          className="w-full mt-4 bg-[#47663B] text-white px-4 py-2 rounded"
+        >
+          Start New Order
+        </button>
       </div>
     </div>
   );

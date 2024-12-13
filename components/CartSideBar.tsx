@@ -1,16 +1,17 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { TiDelete } from "react-icons/ti";
 import { IoAddCircleOutline, IoCartOutline } from "react-icons/io5";
 import { IoIosRemoveCircleOutline } from "react-icons/io";
+import SuccessModal from "./SuccessModal";
 
 const CartSidebar = () => {
   const { cart, addToCart, removeFromCart, clearCart } = useCart();
-
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const totalItems = Object.values(cart).reduce(
     (acc, item) => acc + item.quantity,
     0
@@ -20,6 +21,10 @@ const CartSidebar = () => {
     (total, item) => total + item.price * item.quantity,
     0
   );
+
+  const handleConfirmOrder = () => {
+    setShowSuccessModal(true);
+  };
 
   return (
     <div className="bg-white rounded-lg shadow-md p-6 sticky top-0">
@@ -101,12 +106,15 @@ const CartSidebar = () => {
               Clear Cart
             </button>
             <button
-              onClick={() => alert("Confirming order...")}
+              onClick={handleConfirmOrder}
               className="bg-[#47663B] text-white px-4 py-2 rounded"
             >
               Confirm Order
             </button>
           </div>
+          {showSuccessModal && (
+            <SuccessModal onClose={() => setShowSuccessModal(false)} />
+          )}
         </>
       )}
     </div>

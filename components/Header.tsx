@@ -22,6 +22,10 @@ export default function Header() {
     setIsMobileCartOpen(!isMobileCartOpen);
   };
 
+  const handleCloseMobileCart = () => {
+    setIsMobileCartOpen(false);
+  };
+
   return (
     <header className="bg-[#47663B] text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -78,7 +82,7 @@ export default function Header() {
               </button>
             </div>
             <div className="mt-6">
-              <CartSidebar />
+              <CartSidebar onClose={handleCloseMobileCart} />
             </div>
           </div>
         </div>

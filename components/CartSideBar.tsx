@@ -9,7 +9,11 @@ import { IoAddCircleOutline, IoCartOutline } from "react-icons/io5";
 import { IoIosRemoveCircleOutline } from "react-icons/io";
 import SuccessModal from "./SuccessModal";
 
-const CartSidebar = () => {
+interface CartSidebarProps {
+  onClose?: () => void;
+}
+
+const CartSidebar = ({ onClose }: CartSidebarProps) => {
   const { cart, addToCart, removeFromCart, clearCart } = useCart();
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const totalItems = Object.values(cart).reduce(
@@ -24,6 +28,17 @@ const CartSidebar = () => {
 
   const handleConfirmOrder = () => {
     setShowSuccessModal(true);
+    if (onClose) {
+      onClose();
+    }
+  };
+
+  const handleStartNewOrder = () => {
+    clearCart();
+    setShowSuccessModal(false);
+    if (onClose) {
+      onClose();
+    }
   };
 
   return (
@@ -112,9 +127,7 @@ const CartSidebar = () => {
               Confirm Order
             </button>
           </div>
-          {showSuccessModal && (
-            <SuccessModal onClose={() => setShowSuccessModal(false)} />
-          )}
+          {showSuccessModal && <SuccessModal onClose={handleStartNewOrder} />}
         </>
       )}
     </div>

@@ -22,7 +22,7 @@ const SuccessModal = ({ onClose }: SuccessModalProps) => {
           <p className="text-[#47663B]">We hope you enjoy your food!</p>
         </div>
         <div className="mt-6">
-          <CartSidebar />
+          <CartSidebar onClose={onClose}/>
         </div>
         <button
           onClick={onClose}

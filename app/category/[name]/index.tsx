@@ -32,6 +32,7 @@ const Category = () => {
   const handleViewRecipe = (idMeal: string) => {
     router.push(`/category/${categoryName}/${idMeal}`);
   };
+  
 
   if (isLoading) {
     return <div className="text-center py-10">Loading...</div>;

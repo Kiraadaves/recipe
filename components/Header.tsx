@@ -78,7 +78,7 @@ export default function Header() {
               </button>
             </div>
             <div className="mt-6">
-              <CartSidebar />
+              <CartSidebar onConfirmOrder={handleCartToggle}/>
             </div>
           </div>
         </div>
